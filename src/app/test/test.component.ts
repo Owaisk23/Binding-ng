@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
   {{2+3}}
   {{"Welcome " + name}}
   {{name.length}}ss
+  <h2 [ngClass]="messageClass">Hello WORLD!</h2>
   <h1 [class.text-danger]="hasError">{{name.toUpperCase()}}</h1>
   <h2 class="text-special">{{greetUser()}}</h2>
   <h2 [class]="dangerClass">{{siteUrl}}</h2>
@@ -23,7 +24,13 @@ export class TestComponent implements OnInit {
   public isDisabled = true;
   public siteUrl = window.location.href;
   public dangerClass = "text-danger"
-  public hasError = true;
+  public hasError = false;
+  public isSpeacial = true;
+  public messageClass ={
+    "text-success": !this.hasError,
+    "text-danger": this.hasError,
+    "text-special": this.isSpeacial
+  }
 
   constructor() { }
 
